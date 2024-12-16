@@ -1,7 +1,7 @@
 {
-  "name": "nest-micro-nx",
+  "name": "api-gateway",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/nest-micro-nx/src",
+  "sourceRoot": "apps/api-gateway/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -9,28 +9,34 @@
       "executor": "nx:run-commands",
       "options": {
         "command": "webpack-cli build",
-        "args": ["node-env=production"]
+        "args": [
+          "node-env=production"
+        ]
       },
       "configurations": {
         "development": {
-          "args": ["node-env=development"]
+          "args": [
+            "node-env=development"
+          ]
         }
       }
     },
     "serve": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
-      "dependsOn": ["build"],
+      "dependsOn": [
+        "build"
+      ],
       "options": {
-        "buildTarget": "nest-micro-nx:build",
+        "buildTarget": "api-gateway:build",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "nest-micro-nx:build:development"
+          "buildTarget": "api-gateway:build:development"
         },
         "production": {
-          "buildTarget": "nest-micro-nx:build:production"
+          "buildTarget": "api-gateway:build:production"
         }
       }
     }
